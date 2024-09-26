@@ -73,9 +73,6 @@ async def timer():
             db[chat_id][0]["played"] += 1
 
 
-asyncio.create_task(timer())
-
-
 async def process_mute_warnings():
     while True:
         await asyncio.sleep(2)
@@ -97,7 +94,7 @@ async def process_mute_warnings():
                     is_muted = bool(m.is_muted and not m.can_self_unmute)
 
                     if is_muted:
-                        await Yukki.stop_stream(chat_id)
+                        await Yukki.force_stop_stream(chat_id)
                         await set_loop(chat_id, 0)
                         await send_warning(chat_id, _["admin_35"].format(t))
 
@@ -148,7 +145,7 @@ async def markup_timer():
                         members.append(member)
 
                     if not members:
-                        await Yukki.stop_stream(chat_id)
+                        await Yukki.force_stop_stream(chat_id)
                         await set_loop(chat_id, 0)
                         continue
 
@@ -193,6 +190,6 @@ async def markup_timer():
             except:
                 continue
 
-
+asyncio.create_task(timer())
 asyncio.create_task(markup_timer())
 asyncio.create_task(process_mute_warnings())
