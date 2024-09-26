@@ -32,11 +32,11 @@ from YukkiMusic.misc import db
 from YukkiMusic.utils.database import (
     add_active_chat,
     add_active_video_chat,
+    get_assistant,
     get_audio_bitrate,
     get_lang,
     get_loop,
     get_video_bitrate,
-    get_assistant,
     group_assistant,
     music_on,
     remove_active_chat,
