@@ -572,7 +572,6 @@ class Call(PyTgCalls):
         async def stream_services_handler(_, chat_id: int):
             await self.force_stop_stream(chat_id)
 
-
         @self.one.on_update(filters.stream_end)
         @self.two.on_update(filters.stream_end)
         @self.three.on_update(filters.stream_end)
