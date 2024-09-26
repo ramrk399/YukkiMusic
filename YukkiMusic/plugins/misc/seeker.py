@@ -190,6 +190,7 @@ async def markup_timer():
             except:
                 continue
 
+
 asyncio.create_task(timer())
 asyncio.create_task(markup_timer())
 asyncio.create_task(process_mute_warnings())
