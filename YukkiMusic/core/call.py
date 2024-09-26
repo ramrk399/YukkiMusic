@@ -583,52 +583,52 @@ class Call(PyTgCalls):
             if isinstance(update, (StreamVideoEnded, StreamAudioEnded)):
                 await self.change_stream(client, update.chat_id)
 
-    @self.one.mtproto_client.on_message(
+        @self.one.mtproto_client.on_message(
         (
             pyro_filter.video_chat_started
             | pyro_filter.video_chat_ended
             | pyro_filter.left_chat_member
         )
     )
-    @self.two.mtproto_client.on_message(
+        @self.two.mtproto_client.on_message(
         (
             pyro_filter.video_chat_started
             | pyro_filter.video_chat_ended
             | pyro_filter.left_chat_member
         )
     )
-    @self.three.mtproto_client.on_message(
+        @self.three.mtproto_client.on_message(
         (
             pyro_filter.video_chat_started
             | pyro_filter.video_chat_ended
             | pyro_filter.left_chat_member
         )
     )
-    @self.four.mtproto_client.on_message(
+        @self.four.mtproto_client.on_message(
         (
             pyro_filter.video_chat_started
             | pyro_filter.video_chat_ended
             | pyro_filter.left_chat_member
         )
     )
-    @self.five.mtproto_client.on_message(
+        @self.five.mtproto_client.on_message(
         (
             pyro_filter.video_chat_started
             | pyro_filter.video_chat_ended
             | pyro_filter.left_chat_member
+            )
         )
-    )
-    async def force_stop_stream(_, message: Message):
-        try:
-            if message.left_chat_member and not message.left_chat_member is None:
-                if (
+        async def force_stop_stream(_, message: Message):
+            try:
+                if message.left_chat_member and not message.left_chat_member is None:
+                    if (
                     message.left_chat_member.id
                     == (await get_assistant(message.chat.id)).id
                 ):
-                    return await self.force_stop_stream(message.chat.id)
-            await self.force_stop_stream(message.chat.id)
-        except Exception:
-            pass
+                        return await self.force_stop_stream(message.chat.id)
+                await self.force_stop_stream(message.chat.id)
+            except Exception:
+                pass
 
 
 Yukki = Call()
