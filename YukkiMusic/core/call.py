@@ -12,9 +12,9 @@ from typing import Union
 
 from ntgcalls import TelegramServerError
 from pyrogram import Client
+from pyrogram import filters as pyro_filter
 from pyrogram.errors import FloodWait
 from pyrogram.types import InlineKeyboardMarkup, Message
-from pyrogram import filters as pyro_filter
 from pytgcalls import PyTgCalls, filters
 from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall
 from pytgcalls.types import (
@@ -582,15 +582,48 @@ class Call(PyTgCalls):
             if isinstance(update, (StreamVideoEnded, StreamAudioEnded)):
                 await self.change_stream(client, update.chat_id)
 
-    @self.one.mtproto_client.on_message((pyro_filter.video_chat_started | pyro_filter.video_chat_ended | pyro_filter.left_chat_member))
-    @self.two.mtproto_client.on_message((pyro_filter.video_chat_started | pyro_filter.video_chat_ended | pyro_filter.left_chat_member))
-    @self.three.mtproto_client.on_message((pyro_filter.video_chat_started | pyro_filter.video_chat_ended | pyro_filter.left_chat_member))
-    @self.four.mtproto_client.on_message((pyro_filter.video_chat_started | pyro_filter.video_chat_ended | pyro_filter.left_chat_member))
-    @self.five.mtproto_client.on_message((pyro_filter.video_chat_started | pyro_filter.video_chat_ended | pyro_filter.left_chat_member))
+    @self.one.mtproto_client.on_message(
+        (
+            pyro_filter.video_chat_started
+            | pyro_filter.video_chat_ended
+            | pyro_filter.left_chat_member
+        )
+    )
+    @self.two.mtproto_client.on_message(
+        (
+            pyro_filter.video_chat_started
+            | pyro_filter.video_chat_ended
+            | pyro_filter.left_chat_member
+        )
+    )
+    @self.three.mtproto_client.on_message(
+        (
+            pyro_filter.video_chat_started
+            | pyro_filter.video_chat_ended
+            | pyro_filter.left_chat_member
+        )
+    )
+    @self.four.mtproto_client.on_message(
+        (
+            pyro_filter.video_chat_started
+            | pyro_filter.video_chat_ended
+            | pyro_filter.left_chat_member
+        )
+    )
+    @self.five.mtproto_client.on_message(
+        (
+            pyro_filter.video_chat_started
+            | pyro_filter.video_chat_ended
+            | pyro_filter.left_chat_member
+        )
+    )
     async def force_stop_stream(_, message: Message):
         try:
             if message.left_chat_member and not message.left_chat_member is None:
-                if message.left_chat_member.id == (await get_assistant(message.chat.id)).id:
+                if (
+                    message.left_chat_member.id
+                    == (await get_assistant(message.chat.id)).id
+                ):
                     return await self.force_stop_stream(message.chat.id)
             await self.force_stop_stream(message.chat.id)
         except Exception:
