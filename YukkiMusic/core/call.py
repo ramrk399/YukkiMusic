@@ -36,6 +36,7 @@ from YukkiMusic.utils.database import (
     get_lang,
     get_loop,
     get_video_bitrate,
+    get_assistant,
     group_assistant,
     music_on,
     remove_active_chat,
