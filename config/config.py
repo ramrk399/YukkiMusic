@@ -112,10 +112,10 @@ GIT_TOKEN = getenv(
 
 # Only  Links formats are  accepted for this Var value.
 SUPPORT_CHANNEL = getenv(
-    "SUPPORT_CHANNEL", "https://t.me/MUSIC_BOT_II"
+    "SUPPORT_CHANNEL", "https://t.me/Alone_feeling_0123"
 )  # Example:- https://t.me/Alone_feeling_0123
 SUPPORT_GROUP = getenv(
-    "SUPPORT_GROUP", "https://t.me/TheCoupleRoom"
+    "SUPPORT_GROUP", "https://t.me/FEELFREET0WRITE69"
 )  # Example:- https://t.me/FEELFREET0WRITE69
 
 
@@ -207,12 +207,12 @@ autoclean = []
 
 START_IMG_URL = getenv(
     "START_IMG_URL",
-    "https://envs.sh/SPI.mp4",
+    "https://envs.sh/SRt.jpg",
 )
 
 PING_IMG_URL = getenv(
     "PING_IMG_URL",
-    "https://graph.org/file/6bdf8e8ef472df6e30303.jpg",
+    "https://envs.sh/WGe.jpg",
 )
 
 PLAYLIST_IMG_URL = getenv(
